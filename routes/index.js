@@ -5,7 +5,7 @@ require('../models/connection');
 const Place= require('../models/places');
 
 
-//NEW PLACE
+//NEW PLACE TO ADD
 router.post('/places', (req, res) => {
     // Check if the place does not already exist in data base
     Place.findOne({ name: req.body.name, nickname: req.body.nickname }).then(data => {
@@ -18,6 +18,7 @@ router.post('/places', (req, res) => {
           longitude: req.body.longitude,
         });
   
+
         newPlace.save().then(newDoc => {
           res.json({ result: true});
         });
@@ -27,8 +28,6 @@ router.post('/places', (req, res) => {
       }
     });
   });
-
-
 
 
 //GET: display all places by NICKNAME
